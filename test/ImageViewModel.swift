@@ -16,7 +16,7 @@ class ImageViewModel: ObservableObject {
     func loadPicturesSeriallyWithOperationQueue() {
         let queue = OperationQueue()
         
-        let op1 = ImageDownloadOperation(imageURL: ImageUrl.imageURL1)
+        let op1 = ImageDownloadOperation(imageURL: ImageUrl.imageURL1, imageService: imageService)
         op1.completionBlock = {
             self.dispatchQueue.executeOnMainThread(group: nil, qos: .unspecified, flags: []) {
                 self.pic1 = op1.imageData
@@ -24,7 +24,7 @@ class ImageViewModel: ObservableObject {
             }
         }
 
-        let op2 = ImageDownloadOperation(imageURL: ImageUrl.imageURL2)
+        let op2 = ImageDownloadOperation(imageURL: ImageUrl.imageURL2, imageService: imageService)
         op2.completionBlock = {
             self.dispatchQueue.executeOnMainThread(group: nil, qos: .unspecified, flags: []) {
                 self.pic2 = op2.imageData
@@ -40,7 +40,7 @@ class ImageViewModel: ObservableObject {
     func loadPicturesParallelyWithOperationQueue() {
         let queue = OperationQueue()
         
-        let op1 = ImageDownloadOperation(imageURL: ImageUrl.imageURL1)
+        let op1 = ImageDownloadOperation(imageURL: ImageUrl.imageURL1, imageService: imageService)
         op1.completionBlock = {
             self.dispatchQueue.executeOnMainThread(group: nil, qos: .unspecified, flags: []) {
                 self.pic1 = op1.imageData
@@ -48,7 +48,7 @@ class ImageViewModel: ObservableObject {
             }
         }
 
-        let op2 = ImageDownloadOperation(imageURL: ImageUrl.imageURL2)
+        let op2 = ImageDownloadOperation(imageURL: ImageUrl.imageURL2, imageService: imageService)
         op2.completionBlock = {
             self.dispatchQueue.executeOnMainThread(group: nil, qos: .unspecified, flags: []) {
                 self.pic2 = op2.imageData

@@ -22,7 +22,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            vm.loadPicturesUsingGCDSerially()
+            vm.loadPicturesParallelyWithOperationQueue()
         }
 //        .task {
 //          await vm.loadPicturesSeriallyWithStructuredConcurrency()

@@ -3,6 +3,21 @@ import Combine
 
 class ImageService {
 
+    func fetchImage(for url: String, completionHandler: @escaping (Data?) -> Void) {
+        let task = URLSession.shared
+            .dataTask(with: URLRequest(url: URL(string: url)!)) { data, res, error in
+                guard let safeData = data,
+                      let res = (res as? HTTPURLResponse),
+                      (200...299).contains(res.statusCode)
+                else {
+                    completionHandler(nil)
+                    return
+                }
+                completionHandler(safeData)
+            }
+        task.resume()
+    }
+    
     func fetchImage(for url: String) -> AnyPublisher<Data, CustomError> {
         return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
             .tryMap { (data: Data?, response: URLResponse) in

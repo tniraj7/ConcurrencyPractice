@@ -1,11 +1,13 @@
 import Foundation
 
 class ImageDownloadOperation: Operation {
-    let imageURL: String
-    var imageData: Data?
+    private let imageURL: String
+    private let imageService: ImageService
+    private(set) var imageData: Data?
     
-    init(imageURL: String) {
+    init(imageURL: String, imageService: ImageService) {
         self.imageURL = imageURL
+        self.imageService = imageService
         super.init()
     }
     
@@ -37,22 +39,12 @@ class ImageDownloadOperation: Operation {
     
     override func main() {
         guard !isCancelled else { return }
-        
-        let task = URLSession.shared
-            .dataTask(with: URLRequest(url: URL(string: imageURL)!))
-        { [weak self] data, res, error in
-
-            guard let safeData = data,
-                  let res = (res as? HTTPURLResponse),
-                (200...299).contains(res.statusCode)
-            else {
-                return
+        imageService.fetchImage(for: imageURL) { [weak self] data in
+            if let data {
+                self?.imageData = data
+                self?.completeOperation()
             }
-            self?.imageData = safeData
-            self?.completeOperation()
         }
-        
-        task.resume()
     }
     
     private func completeOperation() {
