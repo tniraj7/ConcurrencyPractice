@@ -87,14 +87,14 @@ class ImageViewModel: ObservableObject {
     }
     
     func loadPicturesUsingGCDParallely() {
-        ImageDownloadDispatchGroups.shared.parallelDownload { [weak self] images in
+        ImageDownloadUsingDispatchGroup.shared.parallelDownload { [weak self] images in
             self?.pic1 = images[0]
             self?.pic2 = images[1]
         }
     }
     
     func loadPicturesUsingGCDSerially() {
-        ImageDownloadDispatchGroups.shared.serialExecution(
+        ImageDownloadUsingDispatchGroup.shared.serialExecution(
             image1Completion:  { data in
                 self.dispatchQueue.executeOnMainThread(group: nil, qos: .unspecified, flags: []) {
                     self.pic1 = data
