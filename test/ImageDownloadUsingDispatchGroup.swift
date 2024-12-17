@@ -4,7 +4,7 @@ class ImageDownloadUsingDispatchGroup {
     static let shared = ImageDownloadUsingDispatchGroup()
     private init() {}
     private let group = DispatchGroup()
-    private let imageService = ImageService()
+    private let imageService = ImageService(scheduler: MainScheduler())
     
     func parallelDownload(completion: @escaping ([Data]) -> Void) {
         let concurrentQueue = DispatchQueue(label: "Concurrent Queue", attributes: .concurrent)

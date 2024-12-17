@@ -2,7 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var vm = ImageViewModel(dispatchQueue: DispatchQueue.main, imageService: ImageService())
+    @StateObject var vm = ImageViewModel(
+        dispatchQueue: DispatchQueue.main,
+        imageService: ImageService(scheduler: MainScheduler())
+    )
     
     var body: some View {
         VStack(spacing: 8) {
@@ -22,7 +25,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            vm.loadPicturesUsingGCDParallely()
+            vm.loadPicturesParallelyUsingCombine()
         }
 //        .task {
 //          await vm.loadPicturesSeriallyWithStructuredConcurrency()

@@ -7,8 +7,8 @@ class ImageViewModel: ObservableObject {
     var cancellable = Set<AnyCancellable>()
     
     private let dispatchQueue: Dispatching
-    private let imageService: ImageService
-    init(dispatchQueue: Dispatching, imageService: ImageService) {
+    private let imageService: ImageService<MainScheduler>
+    init(dispatchQueue: Dispatching, imageService: ImageService<MainScheduler>) {
         self.dispatchQueue = dispatchQueue
         self.imageService = imageService
     }

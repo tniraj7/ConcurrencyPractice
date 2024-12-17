@@ -13,6 +13,10 @@
 		3403DFF62D0D8D5700F5D3A4 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403DFF52D0D8D5700F5D3A4 /* ImageViewModel.swift */; };
 		3403DFF82D0D8D7700F5D3A4 /* ImageDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403DFF72D0D8D7700F5D3A4 /* ImageDownloadOperation.swift */; };
 		3403DFFA2D0D8D9900F5D3A4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403DFF92D0D8D9900F5D3A4 /* Helper.swift */; };
+		3486ACA72D11B52C008A0A9A /* MainScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3486ACA62D11B52C008A0A9A /* MainScheduler.swift */; };
+		3486ACA92D11B547008A0A9A /* TestScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3486ACA82D11B547008A0A9A /* TestScheduler.swift */; };
+		3486ACAB2D11B56B008A0A9A /* VirtualTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3486ACAA2D11B56B008A0A9A /* VirtualTime.swift */; };
+		3486ACAD2D11B580008A0A9A /* VirtualTimeStride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3486ACAC2D11B580008A0A9A /* VirtualTimeStride.swift */; };
 		34B7BCC92C6715D70061BE7F /* testApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7BCC82C6715D70061BE7F /* testApp.swift */; };
 		34B7BCD02C6715DB0061BE7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34B7BCCF2C6715DB0061BE7F /* Preview Assets.xcassets */; };
 		34B7BCD72C6715F30061BE7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7BCD62C6715F30061BE7F /* ContentView.swift */; };
@@ -26,6 +30,10 @@
 		3403DFF52D0D8D5700F5D3A4 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		3403DFF72D0D8D7700F5D3A4 /* ImageDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadOperation.swift; sourceTree = "<group>"; };
 		3403DFF92D0D8D9900F5D3A4 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		3486ACA62D11B52C008A0A9A /* MainScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScheduler.swift; sourceTree = "<group>"; };
+		3486ACA82D11B547008A0A9A /* TestScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScheduler.swift; sourceTree = "<group>"; };
+		3486ACAA2D11B56B008A0A9A /* VirtualTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTime.swift; sourceTree = "<group>"; };
+		3486ACAC2D11B580008A0A9A /* VirtualTimeStride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTimeStride.swift; sourceTree = "<group>"; };
 		34B7BCC52C6715D70061BE7F /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B7BCC82C6715D70061BE7F /* testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testApp.swift; sourceTree = "<group>"; };
 		34B7BCCF2C6715DB0061BE7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -44,6 +52,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3486ACA52D11B517008A0A9A /* Schedulers */ = {
+			isa = PBXGroup;
+			children = (
+				3486ACA62D11B52C008A0A9A /* MainScheduler.swift */,
+				3486ACA82D11B547008A0A9A /* TestScheduler.swift */,
+				3486ACAA2D11B56B008A0A9A /* VirtualTime.swift */,
+				3486ACAC2D11B580008A0A9A /* VirtualTimeStride.swift */,
+			);
+			path = Schedulers;
+			sourceTree = "<group>";
+		};
 		34B7BCBC2C6715D70061BE7F = {
 			isa = PBXGroup;
 			children = (
@@ -63,15 +82,16 @@
 		34B7BCC72C6715D70061BE7F /* test */ = {
 			isa = PBXGroup;
 			children = (
-				3403DFF12D0D8CD700F5D3A4 /* DispatchQueue+Extension.swift */,
-				3403DFEF2D0D8CA500F5D3A4 /* ImageDownloadUsingDispatchGroup.swift */,
 				34B7BCD62C6715F30061BE7F /* ContentView.swift */,
-				34B7BCC82C6715D70061BE7F /* testApp.swift */,
+				3403DFF12D0D8CD700F5D3A4 /* DispatchQueue+Extension.swift */,
+				3403DFF92D0D8D9900F5D3A4 /* Helper.swift */,
+				3403DFF72D0D8D7700F5D3A4 /* ImageDownloadOperation.swift */,
+				3403DFEF2D0D8CA500F5D3A4 /* ImageDownloadUsingDispatchGroup.swift */,
 				3403DFF32D0D8D1E00F5D3A4 /* ImageService.swift */,
 				3403DFF52D0D8D5700F5D3A4 /* ImageViewModel.swift */,
-				3403DFF72D0D8D7700F5D3A4 /* ImageDownloadOperation.swift */,
-				3403DFF92D0D8D9900F5D3A4 /* Helper.swift */,
+				34B7BCC82C6715D70061BE7F /* testApp.swift */,
 				34B7BCCE2C6715DB0061BE7F /* Preview Content */,
+				3486ACA52D11B517008A0A9A /* Schedulers */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -160,13 +180,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B7BCD72C6715F30061BE7F /* ContentView.swift in Sources */,
+				3486ACA92D11B547008A0A9A /* TestScheduler.swift in Sources */,
 				3403DFF22D0D8CD700F5D3A4 /* DispatchQueue+Extension.swift in Sources */,
 				34B7BCC92C6715D70061BE7F /* testApp.swift in Sources */,
 				3403DFF42D0D8D1E00F5D3A4 /* ImageService.swift in Sources */,
 				3403DFF62D0D8D5700F5D3A4 /* ImageViewModel.swift in Sources */,
 				3403DFF82D0D8D7700F5D3A4 /* ImageDownloadOperation.swift in Sources */,
 				3403DFF02D0D8CA500F5D3A4 /* ImageDownloadUsingDispatchGroup.swift in Sources */,
+				3486ACA72D11B52C008A0A9A /* MainScheduler.swift in Sources */,
+				3486ACAB2D11B56B008A0A9A /* VirtualTime.swift in Sources */,
 				3403DFFA2D0D8D9900F5D3A4 /* Helper.swift in Sources */,
+				3486ACAD2D11B580008A0A9A /* VirtualTimeStride.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

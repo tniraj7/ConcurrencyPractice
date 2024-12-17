@@ -1,8 +1,12 @@
 import Foundation
 import Combine
 
-class ImageService {
-
+class ImageService<S: Scheduler> {
+    private let scheduler: S
+    init(scheduler: S) {
+        self.scheduler = scheduler
+    }
+    
     func fetchImage(for url: String, completionHandler: @escaping (Data?) -> Void) {
         let task = URLSession.shared
             .dataTask(with: URLRequest(url: URL(string: url)!)) { data, res, error in
@@ -30,7 +34,7 @@ class ImageService {
                 return safeData
             }
             .mapError({ $0 as! CustomError })
-            .receive(on: DispatchQueue.main)
+            .receive(on: scheduler)
             .eraseToAnyPublisher()
     }
     

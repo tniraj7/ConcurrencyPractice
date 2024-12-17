@@ -2,10 +2,10 @@ import Foundation
 
 class ImageDownloadOperation: Operation {
     private let imageURL: String
-    private let imageService: ImageService
+    private let imageService: ImageService<MainScheduler>
     private(set) var imageData: Data?
     
-    init(imageURL: String, imageService: ImageService) {
+    init(imageURL: String, imageService: ImageService<MainScheduler>) {
         self.imageURL = imageURL
         self.imageService = imageService
         super.init()
